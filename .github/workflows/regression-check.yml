@@ -1,0 +1,51 @@
+name: Regression Detection
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  broken-mock:
+    name: Broken mode ${{ matrix.mode }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false   # run all four modes even if one of them misbehaves
+      matrix:
+        include:
+          - mode: duplicates
+            test_class: DuplicateBookTest
+          - mode: empty-fields
+            test_class: EmptyFieldsTest
+          - mode: writable-id
+            test_class: ReadOnlyIdTest
+          - mode: server-error
+            test_class: CreateBookTest
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v7
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      - name: Run the suite against a broken mock (it must fail)
+        run: |
+          ./mvnw -B clean test -Dmock.broken=${{ matrix.mode }} | tee mvn.log || true
+
+      - name: Verify the right tests caught the defect
+        run: |
+          if grep -q "FAILURE! -- in com.example.booksapi.tests.${{ matrix.test_class }}" mvn.log; then
+            echo "OK - ${{ matrix.test_class }} detected the '${{ matrix.mode }}' defect"
+          else
+            echo "::error::Defect '${{ matrix.mode }}' was NOT detected by ${{ matrix.test_class }}"
+            exit 1
+          fi

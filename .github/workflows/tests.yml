@@ -1,0 +1,87 @@
+name: API Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+# contents: write is needed to push the gh-pages branch
+permissions:
+  contents: write
+
+# Runs are queued one after another so two runs never overwrite each other's report history
+concurrency:
+  group: allure-report
+  cancel-in-progress: false
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v7
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      - name: Set up Node.js (needed for the Allure 3 CLI)
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Restore Allure history from the gh-pages branch
+        run: |
+          mkdir -p allure-history
+          if git ls-remote --exit-code --heads origin gh-pages > /dev/null 2>&1; then
+            git fetch --depth=1 origin gh-pages
+            git show origin/gh-pages:history.jsonl > allure-history/history.jsonl 2> /dev/null \
+              || rm -f allure-history/history.jsonl
+          fi
+          ls -la allure-history
+
+      - name: Run tests
+        id: tests
+        run: ./mvnw -B clean test
+        continue-on-error: true   # the report must be generated even when tests fail
+
+      - name: Upload test logs
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: test-logs
+          path: |
+            target/logs/test-run.log
+            target/surefire-reports/
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Generate Allure report
+        run: npx --yes allure generate target/allure-results --output target/allure-report
+
+      - name: Publish report to GitHub Pages
+        if: github.event_name != 'pull_request'
+        run: |
+          cp allure-history/history.jsonl target/allure-report/history.jsonl
+          touch target/allure-report/.nojekyll
+          cd target/allure-report
+          git init -b gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Allure report for ${GITHUB_SHA}"
+          git push --force "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" gh-pages
+
+      - name: Add report link to the run summary
+        if: github.event_name != 'pull_request'
+        run: |
+          echo "Allure report: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Fail the job if the tests failed
+        if: steps.tests.outcome == 'failure'
+        run: exit 1

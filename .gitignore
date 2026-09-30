@@ -1,0 +1,23 @@
+# Build output (includes Allure results/report and test logs)
+target/
+
+# IDE files
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.classpath
+.project
+.settings/
+
+# Node (only used locally to run the Allure CLI)
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Keep the Maven Wrapper jar if one is generated
+!.mvn/wrapper/maven-wrapper.jar
+allure-history/
