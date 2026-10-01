@@ -1,0 +1,1 @@
+{"id":"ba9fb3f85ff8c172a6fb3bb2159d52ea.548532a9357904c689708423fa600d7a","fullName":"com.example.booksapi.tests.EmptyFieldsTest.emptyFieldIsRejected","name":"Requirement 3: title and author cannot be empty","status":"passed","testResultsByEnv":{"default":"87c5e217ae1961a7bf7ea55ee5254114"}}

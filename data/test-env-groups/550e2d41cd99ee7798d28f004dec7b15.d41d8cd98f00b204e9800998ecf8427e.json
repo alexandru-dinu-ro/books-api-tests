@@ -1,0 +1,1 @@
+{"id":"550e2d41cd99ee7798d28f004dec7b15.d41d8cd98f00b204e9800998ecf8427e","fullName":"com.example.booksapi.tests.EmptyStoreTest.unknownBookIdReturnsNotFound","name":"GET a book by id returns 404 when it does not exist","status":"passed","testResultsByEnv":{"default":"f369a5b1ff009ef6fd82dbc18bd6736c"}}

@@ -1,0 +1,1 @@
+{"id":"702bd4ad4cae120fbe7f4c28c4d53aaf.62baf552c25db6834f91ad20abdab06e","fullName":"com.example.booksapi.tests.InvalidRequestTest.invalidBodyIsRejected","name":"Invalid request bodies are rejected with HTTP 400 and an error message","status":"passed","testResultsByEnv":{"default":"8163e5db150a6f917a3588caf1a25127"}}

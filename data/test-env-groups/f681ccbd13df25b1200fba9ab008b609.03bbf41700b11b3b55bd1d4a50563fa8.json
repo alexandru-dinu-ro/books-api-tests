@@ -1,0 +1,1 @@
+{"id":"f681ccbd13df25b1200fba9ab008b609.03bbf41700b11b3b55bd1d4a50563fa8","fullName":"com.example.booksapi.tests.DuplicateBookTest.duplicateBookIsRejected","name":"Requirement 6: a duplicate book cannot be created","status":"passed","testResultsByEnv":{"default":"bc91d12afdca2a96c777c07a13b89ced"}}

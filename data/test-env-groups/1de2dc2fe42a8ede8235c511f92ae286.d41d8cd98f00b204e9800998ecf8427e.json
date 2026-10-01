@@ -1,0 +1,1 @@
+{"id":"1de2dc2fe42a8ede8235c511f92ae286.d41d8cd98f00b204e9800998ecf8427e","fullName":"com.example.booksapi.tests.EmptyStoreTest.listIsEmptyAtStart","name":"Requirement 1: the API starts with an empty store","status":"passed","testResultsByEnv":{"default":"bd70ff853c7ca66a4cb1d502920fdd9b"}}

@@ -1,0 +1,1 @@
+{"id":"2f8a49e3a8b22a804f6433b0b54f0c33.d41d8cd98f00b204e9800998ecf8427e","fullName":"com.example.booksapi.tests.SimpleBooksApiTest.verifyBookCanBeCreated","name":"Requirement 5: a book can be created and fetched again","status":"passed","testResultsByEnv":{"default":"22d892bd9a50f031437efd5fb60c73bc"}}

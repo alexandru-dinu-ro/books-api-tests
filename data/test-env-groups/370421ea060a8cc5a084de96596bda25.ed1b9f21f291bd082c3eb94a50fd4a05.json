@@ -1,0 +1,1 @@
+{"id":"370421ea060a8cc5a084de96596bda25.ed1b9f21f291bd082c3eb94a50fd4a05","fullName":"com.example.booksapi.tests.ReadOnlyIdTest.idCannotBeSentByClient","name":"Requirement 4: the id field is read-only","status":"passed","testResultsByEnv":{"default":"06d280cab2be3e09efb729488a4bc0d7"}}

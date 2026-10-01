@@ -1,0 +1,1 @@
+{"id":"3860ca73bb4245fad33b99c0133ad53d.e24e902a505459a16b516e81a04fd696","fullName":"com.example.booksapi.tests.RequiredFieldsTest.missingFieldIsRejected","name":"Requirement 2: title and author are required fields","status":"passed","testResultsByEnv":{"default":"fb953da4ec70796c35c96cff879bb909"}}

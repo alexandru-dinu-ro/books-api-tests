@@ -1,0 +1,1 @@
+{"id":"47f009f0c919491f2cf904693578c8c8.d41d8cd98f00b204e9800998ecf8427e","fullName":"com.example.booksapi.tests.SimpleBooksApiTest.verifyIdIsReadOnly","name":"Requirement 4: the id field is read-only","status":"passed","testResultsByEnv":{"default":"400dc8944d70e5b74208adcdd4bad228"}}

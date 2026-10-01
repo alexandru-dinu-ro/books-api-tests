@@ -1,0 +1,1 @@
+{"id":"b5bc409f6e01eccd10a00678040d808c.d41d8cd98f00b204e9800998ecf8427e","fullName":"com.example.booksapi.tests.CreateBookTest.createdBookCanBeFetchedById","name":"Requirement 5: GET by id returns the same book that was created","status":"passed","testResultsByEnv":{"default":"52a90a13cb3b7a99e4702b10ede3b106"}}

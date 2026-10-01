@@ -1,0 +1,1 @@
+{"id":"6880bcbb6e990778574b6f23def05f75.8616da78c4e03be89fa797b43a0bca38","fullName":"com.example.booksapi.tests.InvalidRequestTest.nonNumericIdIsNotAServerError","name":"GET with a non-numeric book id is a client error, not a server error","status":"passed","testResultsByEnv":{"default":"156ef29b493c1cd67d8ad4897dfc0f63"}}

@@ -1,0 +1,1 @@
+{"id":"5a58dc3f14a2526ec4c2b078f9d62598.d41d8cd98f00b204e9800998ecf8427e","fullName":"com.example.booksapi.tests.CreateBookTest.createdBookIsReturnedInResponse","name":"Requirement 5: a created book is returned in the response","status":"passed","testResultsByEnv":{"default":"3567202ab10f654a575f5aac5e57b517"}}

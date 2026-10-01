@@ -1,0 +1,1 @@
+{"id":"a589c0f25cb2824b3f65613868fe5d33.d41d8cd98f00b204e9800998ecf8427e","fullName":"com.example.booksapi.tests.SimpleBooksApiTest.verifyEmptyStoreAtSpinUp","name":"Requirement 1: the API starts with an empty store","status":"passed","testResultsByEnv":{"default":"39fd829b8de03034d67255f0932f51d0"}}
