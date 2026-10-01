@@ -65,7 +65,7 @@ jobs:
         run: npx --yes allure generate target/allure-results --output target/allure-report
 
       - name: Publish report to GitHub Pages
-        if: github.event_name != 'pull_request'
+        if: github.ref == 'refs/heads/main'
         run: |
           cp allure-history/history.jsonl target/allure-report/history.jsonl
           touch target/allure-report/.nojekyll
@@ -78,7 +78,7 @@ jobs:
           git push --force "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" gh-pages
 
       - name: Add report link to the run summary
-        if: github.event_name != 'pull_request'
+        if: github.ref == 'refs/heads/main'
         run: |
           echo "Allure report: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/" >> "$GITHUB_STEP_SUMMARY"
 
