@@ -99,9 +99,10 @@ src/test/java/com/example/booksapi/
 
 ## Continuous integration
 
-- **`API Tests`** runs on every push and pull request. On `main` it publishes the Allure report to GitHub Pages and keeps the trend history of the last 20 runs.
+- **`API Tests`** runs on every push to `main` and on every pull request. On `main` it publishes the Allure report to GitHub Pages and keeps the trend history of the last 20 runs.
 - **`Regression Detection`** runs the suite against each broken mock mode and verifies that the defect is detected.
 - **Test logs:** every `API Tests` run also uploads a `test-logs` artifact with the full Logback log and the Surefire reports. It is uploaded even when tests fail, and kept for 14 days. Download it from the run page on the Actions tab.
+- **Manual runs:** both workflows can be started by hand on any branch (Actions tab, then **Run workflow**, or `gh workflow run "API Tests" --ref <branch>`). Only runs on `main` publish the report, so other branches can never overwrite it.
 
 ## Design decisions and assumptions
 
